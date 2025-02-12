@@ -1,0 +1,407 @@
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 60px;
+  height: 100vh;
+  background: #343a40;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+.sidebar.expanded {
+  width: 250px;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.sidebar-nav {
+  display: none;
+}
+
+.sidebar.expanded .sidebar-nav {
+  display: block;
+}
+
+.sidebar .nav-link {
+  color: #c1c1c1;
+  padding: 10px;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar .nav-link:hover {
+  color: white;
+  background: #495057;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 70px;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar.expanded + .main-content {
+  margin-left: 260px;
+}
+
+/* Profile Section */
+/* .profile-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.profile-img {
+  width: 100px;
+  border-radius: 50%;
+} */
+/* Profile Section */
+/* Profile Card - Horizontal Layout */
+.profile-card {
+  max-width: 900px; /* Increase width for horizontal layout */
+  background: white;
+  padding: 20px;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Space between image and details */
+}
+
+/* Profile Image */
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Profile Details */
+.profile-details {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 15px; /* Space between items */
+}
+
+.profile-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #333;
+  width: 45%; /* Two items per row */
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+/* Labels and Values */
+.profile-details p strong {
+  text-align: left;
+}
+
+.profile-details p span {
+  text-align: right;
+}
+
+/* Edit Button - Positioned Right */
+#editProfileBtn {
+  margin-left: auto;
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#editProfileBtn:hover {
+  background: #0056b3;
+}
+
+/* Responsive - Stack on small screens */
+@media screen and (max-width: 768px) {
+  .profile-card {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .profile-details {
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .profile-details p {
+      width: 100%;
+  }
+
+  #editProfileBtn {
+      margin-top: 10px;
+      align-self: center;
+  }
+}
+
+
+/* Edit Profile Form */
+.edit-profile-form {
+  display: none;
+  margin-top: 20px;
+}
+
+.edit-profile-form input, .edit-profile-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+/* Settings */
+/* Settings Section */
+.section {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+/* Settings Container */
+.settings-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between toggle switches and labels */
+  flex-wrap: wrap; /* Ensure responsiveness */
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: auto;
+}
+
+/* Switch Button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Toggle ON state */
+.switch input:checked + .slider {
+  background-color: #007bff;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* Text Labels */
+.settings-container span {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #222;
+  color: white;
+}
+
+body.dark-mode .profile-card {
+  background: #333;
+}
+
+/* Global Dark Mode Background & Text */
+body.dark-mode {
+  background: #222;
+  color: white;
+}
+
+/* Fix Headings & Text Visibility */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode p, 
+body.dark-mode span, 
+body.dark-mode label {
+  color: white;
+}
+
+/* Profile Card in Dark Mode */
+body.dark-mode .profile-card {
+  background: #333;
+  border: 1px solid #444;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Fix Input Fields in Dark Mode */
+body.dark-mode input, 
+body.dark-mode textarea {
+  background: #444;
+  color: white;
+  border: 1px solid #666;
+}
+
+/* Fix Placeholder Text */
+body.dark-mode input::placeholder, 
+body.dark-mode textarea::placeholder {
+  color: #bbb;
+}
+
+/* Sidebar in Dark Mode */
+body.dark-mode .sidebar {
+  background: #2a2a2a;
+  color: white;
+}
+
+/* Content Box in Dark Mode */
+body.dark-mode .content {
+  background: #222;
+  color: white;
+}
+
+/* Activity & Settings Cards in Dark Mode */
+body.dark-mode .activity-card, 
+body.dark-mode .settings-container {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+/* Toggle Switch Fix */
+body.dark-mode .slider {
+  background: #555;
+}
+
+body.dark-mode .switch input:checked + .slider {
+  background-color: #007bff;
+}
+
+/* Activity Section */
+.activity-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Ensures exactly 2 cards per row */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Activity Card Styling */
+.activity-card {
+  background: linear-gradient(135deg, #007bff, #6610f2);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  height: 50px
+}
+
+/* Hover Effect */
+.activity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Subtle Overlay */
+.activity-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.activity-card:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .activity-section {
+    grid-template-columns: 1fr; /* 1 card per row on small screens */
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px;
+  }
+
+  .sidebar.expanded {
+    width: 150px;
+  }
+
+  .main-content {
+    margin-left: 50px;
+    padding: 10px;
+  }
+
+  .sidebar.expanded + .main-content {
+    margin-left: 160px;
+  }
+
+  .activity-card {
+    padding: 10px;
+  }
+}
